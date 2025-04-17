@@ -221,11 +221,27 @@ button:hover, .navbar nav a:hover {
   backdrop-filter: blur(8px);
   transform-style: preserve-3d;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: cardIdleTilt 8s ease-in-out infinite;
 }
 
 .plant-card:hover {
-  transform: rotateY(2deg) scale(1.03);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+  transform: rotateY(2deg) scale(1.08);
+  box-shadow: 
+    0 0 30px rgba(0, 255, 136, 0.5), 
+    0 0 60px rgba(0, 255, 136, 0.2), 
+    0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: glowPulse 1.5s infinite ease-in-out;
+}
+
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 20px rgba(0, 255, 136, 0.3); }
+  50% { box-shadow: 0 0 45px rgba(0, 255, 136, 0.7); }
+  100% { box-shadow: 0 0 20px rgba(0, 255, 136, 0.3); }
+}
+
+@keyframes cardIdleTilt {
+  0%, 100% { transform: rotateZ(0deg); }
+  50% { transform: rotateZ(0.6deg); }
 }
 
 .plant-card a {
@@ -339,7 +355,7 @@ button:hover, .navbar nav a:hover {
   position: absolute;
   top: -10px;
   right: -10px;
-  font-size: 1.2rem;
+  font-size: 1.7rem;
   opacity: 0.6;
   animation: twinkle 2s infinite ease-in-out;
 }
@@ -396,6 +412,30 @@ button:hover, .navbar nav a:hover {
 }
 
 .leaf-button:hover {
+  background-color: #7de6a5;
+  transform: scale(1.05);
+}
+
+.add-plant-button {
+  background-color: #aef6be;
+  color: #1f4037;
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+  animation: leafBounce 2s infinite ease-in-out;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-top: 1.5rem;
+}
+
+.add-plant-button:hover {
   background-color: #7de6a5;
   transform: scale(1.05);
 }
