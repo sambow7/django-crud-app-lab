@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>All Plants</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}All Plants{% endblock %}
+
+{% block content %}
   <h1>All My Plants</h1>
   <ul>
     {% for plant in plants %}
@@ -12,7 +11,5 @@
       </li>
     {% endfor %}
   </ul>
-  <p><a href="{% url 'home' %}">Back to Home</a></p>
   <p><a href="{% url 'plants_create' %}">Add a New Plant</a></p>
-</body>
-</html>
+{% endblock %}

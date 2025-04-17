@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Plant Collector</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}Home - Plant Collector{% endblock %}
+
+{% block content %}
   <h1>🌿 Welcome to the Plant Collector App 🌿</h1>
   <p><a href="{% url 'index' %}">View All Plants</a></p>
-</body>
-</html>
+{% endblock %}

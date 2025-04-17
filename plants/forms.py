@@ -1,7 +1,15 @@
 from django import forms
+from .models import CareLog
 from .models import Plant
+
 
 class PlantForm(forms.ModelForm):
     class Meta:
         model = Plant
-        fields = '__all__'
+        fields = "__all__"
+
+
+class CareLogForm(forms.ModelForm):
+    class Meta:
+        model = CareLog
+        fields = ["date", "notes"]

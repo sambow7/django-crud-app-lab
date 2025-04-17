@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Plant Collector{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <header class="navbar">
+    <h1><a href="{% url 'home' %}">🌿 Plant Collector</a></h1>
+    <nav>
+      <a href="{% url 'index' %}">All Plants</a>
+      <a href="{% url 'plants_create' %}">Add Plant</a>
+    </nav>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

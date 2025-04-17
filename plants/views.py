@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from .models import Plant
 from .forms import PlantForm
+from .forms import CareLogForm
 
 
 def home(request):
@@ -16,8 +17,20 @@ def plants_index(request):
 
 def plants_detail(request, plant_id):
     plant = Plant.objects.get(id=plant_id)
-    return render(request, "plants/detail.html", {"plant": plant})
+    care_form = CareLogForm()
 
+    if request.method == 'POST':
+        care_form = CareLogForm(request.POST)
+        if care_form.is_valid():
+            new_log = care_form.save(commit=False)
+            new_log.plant = plant
+            new_log.save()
+            return redirect('detail', plant_id=plant.id)
+
+    return render(request, 'plants/detail.html', {
+        'plant': plant,
+        'care_form': care_form
+    })
 class PlantCreate(CreateView):
     model = Plant
     form_class = PlantForm

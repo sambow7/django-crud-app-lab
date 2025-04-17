@@ -1,17 +1,31 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>{{ plant.name }}</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}{{ plant.name }}{% endblock %}
+
+{% block content %}
   <h1>{{ plant.name }}</h1>
   <p><strong>Species:</strong> {{ plant.species }}</p>
   <p><strong>Description:</strong> {{ plant.description }}</p>
   <p><strong>Date Planted:</strong> {{ plant.date_planted }}</p>
+
   <p>
     <a href="{% url 'plants_update' plant.id %}">Edit</a> |
     <a href="{% url 'plants_delete' plant.id %}">Delete</a>
   </p>
-  <p><a href="{% url 'index' %}">Back to All Plants</a></p>
-</body>
-</html>
+
+  <h2>Care Logs</h2>
+  <ul>
+    {% for log in plant.carelog_set.all %}
+      <li><strong>{{ log.date }}:</strong> {{ log.notes }}</li>
+    {% empty %}
+      <li>No care logs yet.</li>
+    {% endfor %}
+  </ul>
+
+  <h3>Add a Care Log</h3>
+  <form method="POST">
+    {% csrf_token %}
+    {{ care_form.as_p }}
+    <button type="submit">Add Log</button>
+  </form>
+{% endblock %}
