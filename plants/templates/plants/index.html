@@ -3,13 +3,22 @@
 {% block title %}All Plants{% endblock %}
 
 {% block content %}
+  <div class="landing" id="landing-screen">
+    <h1>Welcome to Plant Collector 🌿</h1>
+    <button onclick="document.getElementById('landing-screen').style.display='none'">
+      Start Growing
+    </button>
+  </div>
   <h1>All My Plants</h1>
-  <ul>
+  <div class="plant-grid">
     {% for plant in plants %}
-      <li>
-        <a href="{% url 'detail' plant.id %}">{{ plant.name }}</a> ({{ plant.species }})
-      </li>
+      <div class="plant-card">
+        <a href="{% url 'detail' plant.id %}">
+          <h2>{{ plant.name }}</h2>
+          <p>{{ plant.species }}</p>
+        </a>
+      </div>
     {% endfor %}
-  </ul>
+  </div>
   <p><a href="{% url 'plants_create' %}">Add a New Plant</a></p>
 {% endblock %}

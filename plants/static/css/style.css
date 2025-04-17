@@ -1,0 +1,246 @@
+/* Base Reset */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(-45deg, #00ff88, #9fffcb, #a1ff0a, #3c6e47, #1f4037, #1b2d26);
+  background-size: 600% 600%;
+  animation: gradientShift 20s ease infinite;
+  color: #2e4d3f;
+  position: relative;
+  z-index: 1;
+}
+
+/* Full Page Landing Section */
+.landing {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1f4037, #99f2c8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 1.5s ease forwards;
+  color: white;
+  text-align: center;
+}
+
+.landing h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.landing button {
+  background-color: #00ff88;
+  color: #003f2f;
+  padding: 1rem 2rem;
+  border: none;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  animation: pulse 2s infinite;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.landing button:hover {
+  background-color: #00cc77;
+}
+
+/* Pulse animation for CTA */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+/* Navbar Styling */
+.navbar {
+  background-color: #2e4d3f;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: slideDown 1s ease-out forwards;
+}
+
+.navbar h1 a {
+  color: #aef6be;
+  text-decoration: none;
+  font-size: 1.8rem;
+  transition: color 0.3s;
+}
+
+.navbar h1 a:hover {
+  color: #fff;
+}
+
+.navbar nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #c2ffd3;
+  font-weight: bold;
+  position: relative;
+}
+
+.navbar nav a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 3px;
+  background: #aef6be;
+  transition: width 0.3s;
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+}
+
+.navbar nav a:hover::after {
+  width: 100%;
+}
+
+/* Main Content */
+main {
+  padding: 2rem;
+  animation: fadeIn 1s ease-in;
+}
+
+h1, h2, h3 {
+  color: #245941;
+}
+
+/* Button */
+button {
+  background-color: #2e4d3f;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #4d7c63;
+}
+
+/* Animations */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Fun Floating Leaves */
+body::before {
+  content: '🍃 🍀 🌿 🍃';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  font-size: 2rem;
+  animation: floatLeaves 20s linear infinite alternate;
+  opacity: 0.15;
+  z-index: 0;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* Bouncy Buttons and Nav Links */
+button, .navbar nav a {
+  animation: popIn 0.6s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover, .navbar nav a:hover {
+  transform: scale(1.08);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Animated Keyframes */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  25% { background-position: 25% 50%; }
+  50% { background-position: 75% 50%; }
+  75% { background-position: 50% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes floatLeaves {
+  0% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(10px) translateX(50px); }
+  100% { transform: translateY(-10px) translateX(100px); }
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Plant Card Grid */
+.plant-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.plant-card {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plant-card:hover {
+  transform: rotateY(2deg) scale(1.03);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+.plant-card a {
+  text-decoration: none;
+  color: #2e4d3f;
+}
+
+.plant-card h2 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.plant-card p {
+  margin: 0.5rem 0 0;
+  font-size: 1rem;
+  color: #4a7c59;
+}
