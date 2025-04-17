@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>All Plants</title>
+</head>
+<body>
+  <h1>All My Plants</h1>
+  <ul>
+    {% for plant in plants %}
+      <li>
+        <a href="{% url 'detail' plant.id %}">{{ plant.name }}</a> ({{ plant.species }})
+      </li>
+    {% endfor %}
+  </ul>
+  <p><a href="{% url 'home' %}">Back to Home</a></p>
+  <p><a href="{% url 'plants_create' %}">Add a New Plant</a></p>
+</body>
+</html>

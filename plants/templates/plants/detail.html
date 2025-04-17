@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{ plant.name }}</title>
+</head>
+<body>
+  <h1>{{ plant.name }}</h1>
+  <p><strong>Species:</strong> {{ plant.species }}</p>
+  <p><strong>Description:</strong> {{ plant.description }}</p>
+  <p><strong>Date Planted:</strong> {{ plant.date_planted }}</p>
+  <p>
+    <a href="{% url 'plants_update' plant.id %}">Edit</a> |
+    <a href="{% url 'plants_delete' plant.id %}">Delete</a>
+  </p>
+  <p><a href="{% url 'index' %}">Back to All Plants</a></p>
+</body>
+</html>
