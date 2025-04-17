@@ -3,12 +3,6 @@
 {% block title %}All Plants{% endblock %}
 
 {% block content %}
-  <div class="landing" id="landing-screen">
-    <h1>Welcome to Plant Collector 🌿</h1>
-    <button onclick="document.getElementById('landing-screen').style.display='none'">
-      Start Growing
-    </button>
-  </div>
   <h1>All My Plants</h1>
   <div class="plant-grid">
     {% for plant in plants %}

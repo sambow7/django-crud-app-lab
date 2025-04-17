@@ -3,6 +3,14 @@
 {% block title %}Home - Plant Collector{% endblock %}
 
 {% block content %}
-  <h1>🌿 Welcome to the Plant Collector App 🌿</h1>
-  <p><a href="{% url 'index' %}">View All Plants</a></p>
+  <div class="landing" id="landing-screen">
+    <h1>Welcome to Plant Collector 🌿</h1>
+    <button onclick="document.getElementById('landing-screen').style.display='none'">
+      Start Growing
+    </button>
+  </div>
+  <div class="home-content">
+    <h1>🌿 Welcome to the Plant Collector App 🌿</h1>
+    <a href="{% url 'index' %}" class="leaf-button">🪴 View All Plants</a>
+  </div>
 {% endblock %}

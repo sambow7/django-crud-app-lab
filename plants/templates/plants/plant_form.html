@@ -1,15 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>{% if form.instance.pk %}Update{% else %}Add{% endif %} Plant</title>
-</head>
-<body>
-  <h1>{% if form.instance.pk %}Update{% else %}Add{% endif %} Plant</h1>
-  <form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Save</button>
-  </form>
-  <p><a href="{% url 'index' %}">Cancel</a></p>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}Add Plant{% endblock %}
+
+{% block content %}
+  <div class="form-container">
+    <h1>Add Plant</h1>
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div class="form-buttons">
+        <button type="submit">Save</button>
+        <a href="{% url 'index' %}">Cancel</a>
+      </div>
+    </form>
+  </div>
+{% endblock %}
