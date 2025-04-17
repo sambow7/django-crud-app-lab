@@ -6,5 +6,10 @@ class Plant(models.Model):
     description = models.TextField()
     date_planted = models.DateField()
 
+class CareLog(models.Model):
+    date = models.DateField()
+    notes = models.TextField()
+    plant = models.ForeignKey(Plant, on_delete=models.CASCADE)
+
     def __str__(self):
-        return self.name
+        return f"{self.date} - {self.plant.name}"

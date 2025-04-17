@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from .models import Plant
+from .forms import PlantForm
 
 
 def home(request):
@@ -19,13 +20,13 @@ def plants_detail(request, plant_id):
 
 class PlantCreate(CreateView):
     model = Plant
-    fields = '__all__'
+    form_class = PlantForm
     success_url = reverse_lazy('index')
     template_name = 'plants/plant_form.html'
 
 class PlantUpdate(UpdateView):
     model = Plant
-    fields = '__all__'
+    form_class = PlantForm
     success_url = reverse_lazy('index')
     template_name = 'plants/plant_form.html'
 
