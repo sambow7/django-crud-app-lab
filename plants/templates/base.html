@@ -1,22 +1,30 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>{% block title %}Plant Collector{% endblock %}</title>
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-  <header class="navbar">
-    <h1><a href="{% url 'home' %}">🌿 Plant Collector</a></h1>
-    <nav>
-      <a href="{% url 'index' %}">All Plants</a>
-      <a href="{% url 'plants_create' %}">Add Plant</a>
-    </nav>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Plant Collector{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <header class="navbar">
+      <h1><a href="{% url 'home' %}">🌿 Plant Collector</a></h1>
+      <nav>
+        <a href="{% url 'index' %}">All Plants</a>
+        <a href="{% url 'plants_create' %}">Add Plant</a>
+        {% if user.is_authenticated %}
+        <span>Welcome, {{ user.username }}!</span>
+        <form method="POST" action="{% url 'logout' %}" style="display: inline">
+          {% csrf_token %}
+          <button type="submit" class="logout-button">Logout</button>
+        </form>
+        {% else %}
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'signup' %}">Sign Up</a>
+        {% endif %}
+      </nav>
+    </header>
 
-  <main>
-    {% block content %}{% endblock %}
-  </main>
-</body>
+    <main>{% block content %}{% endblock %}</main>
+  </body>
 </html>

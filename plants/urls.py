@@ -9,4 +9,5 @@ urlpatterns = [
     path('plants/create/', PlantCreate.as_view(), name='plants_create'),
     path('plants/<int:pk>/update/', PlantUpdate.as_view(), name='plants_update'),
     path('plants/<int:pk>/delete/', PlantDelete.as_view(), name='plants_delete'),
+    path('signup/', views.signup, name='signup'),
 ]

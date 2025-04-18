@@ -488,3 +488,13 @@ button:hover, .navbar nav a:hover {
   display: inline-block;
   margin-bottom: 2rem;
 }
+
+.logout-button {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+}
