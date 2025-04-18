@@ -6,12 +6,15 @@
   <h1>All My Plants</h1>
   <div class="plant-grid">
     {% for plant in plants %}
-      <div class="plant-card">
-        <a href="{% url 'detail' plant.id %}">
-          <h2>{{ plant.name }}</h2>
-          <p>{{ plant.species }}</p>
-        </a>
-      </div>
+      <a href="{% url 'detail' plant.id %}" class="plant-card no-underline">
+        {% if plant.image_url %}
+          <img src="{{ plant.image_url }}" alt="{{ plant.name }}" class="plant-image" />
+        {% else %}
+          <div class="placeholder">🌿</div>
+        {% endif %}
+        <h2>{{ plant.name }}</h2>
+        <p>{{ plant.species }}</p>
+      </a>
     {% endfor %}
   </div>
   <p><a class="add-plant-button" href="{% url 'plants_create' %}">Add a New Plant</a></p>

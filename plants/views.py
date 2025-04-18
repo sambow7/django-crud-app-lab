@@ -12,7 +12,7 @@ def home(request):
 
 
 def plants_index(request):
-    plants = Plant.objects.all()
+    plants = Plant.objects.filter(user=request.user)
     return render(request, "plants/index.html", {"plants": plants})
 
 
@@ -49,6 +49,10 @@ class PlantCreate(CreateView):
     form_class = PlantForm
     success_url = reverse_lazy("index")
     template_name = "plants/plant_form.html"
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 
 class PlantUpdate(UpdateView):
